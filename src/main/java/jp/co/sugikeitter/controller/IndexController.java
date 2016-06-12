@@ -16,7 +16,13 @@ public class IndexController {
 
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String index() {
-        logger.info("index");
+        logger.info("/index");
         return "index";
+    }
+
+    @RequestMapping(value="/crateuser", method=RequestMethod.GET)
+    public String crateuser() {
+        logger.info("/createuser");
+        return "createuser";
     }
 }
