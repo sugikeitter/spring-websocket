@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:beans="http://www.springframework.org/schema/beans"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/security
+                            http://www.springframework.org/schema/security/spring-security.xsd
+                            http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context.xsd">
+    <http auto-config="true">
+        <!-- HTTPレスポンスに自動でセキュリティに関するヘッダを設定 -->
+        <headers/>
+
+        <intercept-url pattern="/resources/**" access="permitAll" />
+        <intercept-url pattern="/chat" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')" />
+        <intercept-url pattern="/admin*" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/user*" access="hasRole('ROLE_USER')" />
+
+        <access-denied-handler error-page="/403" />
+
+        <form-login login-page="/"
+                    default-target-url="/chat"
+                    authentication-failure-url="/error"
+                    login-processing-url="/authentication"
+                    username-parameter="un"
+                    password-parameter="pw"/>
+
+        <logout logout-url="/logout"
+            logout-success-url="/"
+            invalidate-session="true" />
+
+        <anonymous granted-authority="ROLE_ANONYMOUS" />
+    </http>
+
+    <authentication-manager>
+        <authentication-provider user-service-ref="userDetailsService">
+            <password-encoder ref="passwordEncorder"/>
+        </authentication-provider>
+    </authentication-manager>
+
+    <beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+        <beans:property name="rolePrefix" value="ROLE_" />
+        <beans:property name="dataSource" ref="dataSource" />
+        <beans:property name="enableGroups" value="false" />
+        <beans:property name="usersByUsernameQuery"
+                        value="SELECT user_name, password AS password, enabled FROM user_info WHERE user_name = ?" />
+        <beans:property name="authoritiesByUsernameQuery"
+                        value="SELECT user_name, authority AS authority FROM user_info WHERE user_name = ?" />
+    </beans:bean>
+</beans:beans>
