@@ -20,9 +20,9 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping(value="/crateuser", method=RequestMethod.GET)
-    public String crateuser() {
-        logger.info("/createuser");
-        return "createuser";
+    @RequestMapping(value="/createUser", method=RequestMethod.GET)
+    public String createUser() {
+        logger.info("/createUser");
+        return "createUser";
     }
 }

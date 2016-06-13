@@ -27,7 +27,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </form>
         <div class="form-footer">
-            <p><a href="./crateuser">Create an account</a></p>
+            <p><a href="./createUser">Create an account</a></p>
             <!-- TODO -->
             <p><a href="#">Forgot password?</a></p>
         </div>

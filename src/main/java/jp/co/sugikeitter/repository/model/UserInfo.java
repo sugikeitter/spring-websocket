@@ -2,9 +2,7 @@ package jp.co.sugikeitter.repository.model;
 
 import java.io.Serializable;
 
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.Getter;
 import lombok.ToString;
 
 @Data
@@ -14,7 +12,6 @@ public class UserInfo implements Serializable {
 
     private String userName;
 
-    @Getter(AccessLevel.NONE)
     private String password;
 
     private String authority;
