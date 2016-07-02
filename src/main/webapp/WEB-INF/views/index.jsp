@@ -4,9 +4,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/index.css" />" rel="stylesheet">
     <script type="text/javascript" src="<c:url value="/resources/js/jquery-2.1.1.min.js" />"></script>
-    <script type="text/javascript" src="<c:url value="/resources/js/login.js" />"></script>
+    <%-- <script type="text/javascript" src="<c:url value="/resources/js/index.js" />"></script> --%>
     <title>WebSocket Application</title>
 </head>
 <body>
