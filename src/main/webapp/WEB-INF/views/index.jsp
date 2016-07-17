@@ -14,11 +14,9 @@
         <h1>Chat</h1>
         <form id="form" action="<c:url value='authentication'/>" method="post">
             <div class="form-item">
-                <label for="Username"></label>
                 <input type="text" name="un" required="required" placeholder="Username"></input>
             </div>
             <div class="form-item">
-                <label for="password"></label>
                 <input type="password" name="pw" required="required" placeholder="Password"></input>
             </div>
             <div class="button-panel">
